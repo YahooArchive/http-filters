@@ -1,0 +1,7 @@
+*.o
+tests
+*.so
+.*.sw?
+cppunit
+Makefile.yahoo
+*.dSYM/
