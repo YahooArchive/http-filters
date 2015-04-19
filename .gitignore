@@ -3,5 +3,5 @@ tests
 *.so
 .*.sw?
 cppunit
-Makefile.yahoo
+Makefile.local
 *.dSYM/

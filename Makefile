@@ -1,18 +1,20 @@
 CXX ?= g++
 CXXFLAGS += -g -fPIC
 ENABLE_ASAN ?= false
-GDB ?= gdb
-
-ifeq ($(shell uname), Darwin)
-	GDB := lldb
-endif
 
 ifeq ($(ENABLE_ASAN), true)
 	CXXFLAGS += -fsanitize=address
 endif
 
-gdb: tests
-	$(GDB) ./$< -ex run -ex quit;
+ifeq ($(shell uname), Darwin)
+	GDB ?= lldb
+	SOFLAGS += -dynamiclib -undefined suppress -flat_namespace
+else
+	GDB ?= gdb
+	SOFLAGS += -shared -Wl,--allow-shlib-undefined
+endif
+
+-include Makefile.local
 
 run: tests
 	./$<;
@@ -24,13 +26,12 @@ cppunit: assembler.cc bitmap.cc compiler.cc vm-printer.cc \
 
 tests: assembler.o bitmap.o compiler.o vm-printer.o representation.o \
 	vm-impl.h tests.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LIBCPPUNIT) -o $@ $(filter-out %.h, $^);
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(filter-out %.h, $^);
 
-ats-filters.so: LDFLAGS += -Wl,--allow-shlib-undefined -shared
 ats-filters.so: CXXFLAGS += -DPLUGIN_TAG=\"ats-filters\"
 ats-filters.so: ats-filters.o assembler.o bitmap.o compiler.o representation.o \
 	ts.o ts-impl.o vm-impl.h vm-printer.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(filter-out %.h, $^);
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(SOFLAGS) -o $@ $(filter-out %.h, $^);
 
 %.o: %.cc
 	$(CXX) $(CXXFLAGS) -c -o $@ $^;
