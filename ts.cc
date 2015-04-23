@@ -55,6 +55,23 @@ Headers::Result Headers::operator [] (
   return Result(NULL, false);
 }
 
+void Headers::print(std::ostream & o) const {
+  const Map::const_iterator end = map_.end();
+  Map::const_iterator it = map_.begin();
+  for (; it != end; ++it) {
+    o << it->first.str();
+    if ( ! it->second.empty()) {
+      const Values::const_iterator end2 = it->second.end();
+      Values::const_iterator it2 = it->second.begin();
+      o << ": " << it2->str();
+      for (++it2; it2 != end2; ++it2) {
+        o << ", " << it2->str();
+      }
+    }
+    o << "\n";
+  }
+}
+
 
 Cookies::Cookies(const util::StringView & s) {
   if (s.pointer != NULL) {
