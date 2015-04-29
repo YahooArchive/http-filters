@@ -59,6 +59,9 @@ static int handler(TSCont continuation, TSEvent event, void * data) {
 
       for (int i = 0; i < ARRAY_SIZE(names); ++i) {
         if (vm.run(data->offsets[i])) {
+          /*
+           * replace here with your own logic.
+           */
           TSDebug(PLUGIN_TAG, "vm result says it is: %s", names[i]);
         }
       }
