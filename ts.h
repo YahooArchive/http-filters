@@ -8,6 +8,7 @@
 #define TS_H
 
 #include <map>
+#include <ostream>
 #include <string>
 #include <vector>
 
@@ -33,6 +34,7 @@ struct Headers {
   Headers(const TSMBuffer &, const TSMLoc &);
   inline bool empty(void) const { return map_.empty(); }
   Result operator [] (const char * const) const;
+  void print(std::ostream &) const;
 };
 
 struct Cookies {
