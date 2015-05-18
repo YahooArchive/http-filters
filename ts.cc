@@ -41,7 +41,11 @@ Headers::Headers(const TSMBuffer & b, const TSMLoc & l) {
         v.push_back(util::StringView(buffer2, length2));
       }
     }
-    location = TSMimeHdrFieldNext(b, l, location);
+    {
+      const TSMLoc next = TSMimeHdrFieldNext(b, l, location);
+      ASSERT(TSHandleMLocRelease(b, l, location) == TS_SUCCESS);
+      location = next;
+    }
   }
 }
 
