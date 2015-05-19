@@ -21,7 +21,8 @@ util::StringView getHeader(const TSMBuffer b, const TSMLoc l, const char * const
     int length = 0;
     const char * const c = TSMimeHdrFieldValueStringGet(b, l, f, -1, &length);
     result = util::StringView(c, length);
-    TSHandleMLocRelease(b, l, f);
+    const TSReturnCode r = TSHandleMLocRelease(b, l, f);
+    ASSERT(r == TS_SUCCESS);
   }
   return result;
 }
@@ -43,7 +44,8 @@ Headers::Headers(const TSMBuffer & b, const TSMLoc & l) {
     }
     {
       const TSMLoc next = TSMimeHdrFieldNext(b, l, location);
-      ASSERT(TSHandleMLocRelease(b, l, location) == TS_SUCCESS);
+      const TSReturnCode r = TSHandleMLocRelease(b, l, location);
+      ASSERT(r == TS_SUCCESS);
       location = next;
     }
   }
