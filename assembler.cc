@@ -369,7 +369,7 @@ void Assembler::pushEqualQueryParameter(const char * const a,
   }
   const uint32_t o = pushMemory(a),
         p = pushMemory(b);
-  push(Opcodes::kEqualHeader, o, p, 0);
+  push(Opcodes::kEqualQueryParameter, o, p, 0);
 }
 
 void Assembler::pushNotEqualQueryParameter(const char * const a,
