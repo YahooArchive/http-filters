@@ -87,19 +87,21 @@ struct TSImplementation : BaseImplementation {
 
   bool ContainsDomain(const char * const, const uint32_t);
   bool EqualDomain(const char * const, const uint32_t);
-  bool StartsWithDomain(const char * const, const uint32_t, const uint32_t);
 
   inline bool NotEqualDomain(const char * const a, const uint32_t b) {
     return ! EqualDomain(a, b);
   }
 
+  bool StartsWithDomain(const char * const, const uint32_t, const uint32_t);
+
   bool ContainsPath(const char * const, const uint32_t);
   bool EqualPath(const char * const, const uint32_t);
-  bool StartsWithPath(const char * const, const uint32_t, const uint32_t);
 
   inline bool NotEqualPath(const char * const a, const uint32_t b) {
     return ! EqualPath(a, b);
   }
+
+  bool StartsWithPath(const char * const, const uint32_t, const uint32_t);
 
   util::StringView queryParameter(const TSMBuffer & b) {
     int length = 0;
@@ -118,11 +120,12 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterQueryParameter(const char * const, const char * const, const int64_t);
   bool LessThanQueryParameter(const char * const, const int64_t);
   bool LessThanAfterQueryParameter(const char * const, const char * const, const int64_t);
-  bool StartsWithQueryParameter(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualQueryParameter(const char * const a, const char * const b) {
     return ExistsQueryParameter(a) && ! EqualQueryParameter(a, b);
   }
+
+  bool StartsWithQueryParameter(const char * const, const char * const, const uint32_t);
 
   bool ContainsHeader(const char * const, const char * const);
   bool EqualHeader(const char * const, const char * const);
@@ -135,11 +138,12 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterHeader(const char * const, const char * const, const int64_t);
   bool LessThanHeader(const char * const, const int64_t);
   bool LessThanAfterHeader(const char * const, const char * const, const int64_t);
-  bool StartsWithHeader(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualHeader(const char * const a, const char * const b) {
     return ExistsHeader(a) && ! EqualHeader(a, b);
   }
+
+  bool StartsWithHeader(const char * const, const char * const, const uint32_t);
 
   bool ContainsCookie(const char * const, const char * const);
   bool EqualCookie(const char * const, const char * const);
@@ -152,11 +156,12 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterCookie(const char * const, const char * const, const int64_t);
   bool LessThanCookie(const char * const, const int64_t);
   bool LessThanAfterCookie(const char * const, const char * const, const int64_t);
-  bool StartsWithCookie(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualCookie(const char * const a, const char * const b) {
     return ExistsCookie(a) && ! EqualCookie(a, b);
   }
+
+  bool StartsWithCookie(const char * const, const char * const, const uint32_t);
 
 };
 } //end of filters namespace
