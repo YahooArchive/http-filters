@@ -133,13 +133,13 @@ void Compiler::dispatch(const Node * const n) {
     { "notEqualHeader", &Compiler::PushNotEqualHeader },
     { "notEqualPath", &Compiler::PushNotEqualPath },
     { "notEqualQueryParameter", &Compiler::PushNotEqualQueryParameter },
+    { "printDebug", &Compiler::PushPrintDebug },
+    { "printError", &Compiler::PushPrintError },
     { "startsWithCookie", &Compiler::PushStartsWithCookie },
     { "startsWithDomain", &Compiler::PushStartsWithDomain },
     { "startsWithHeader", &Compiler::PushStartsWithHeader },
     { "startsWithPath", &Compiler::PushStartsWithPath },
     { "startsWithQueryParameter", &Compiler::PushStartsWithQueryParameter },
-    { "printDebug", &Compiler::PushPrintDebug },
-    { "printError", &Compiler::PushPrintError },
     { "true", &Compiler::PushTrue },
   };
 
