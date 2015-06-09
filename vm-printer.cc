@@ -132,6 +132,11 @@ void Printer::print(const Code & co, const Memory & m,
       case Opcodes::kNotEqualQueryParameter:
       case Opcodes::kPrintDebug:
       case Opcodes::kPrintError:
+      case Opcodes::kStartsWithCookie:
+      case Opcodes::kStartsWithDomain:
+      case Opcodes::kStartsWithHeader:
+      case Opcodes::kStartsWithPath:
+      case Opcodes::kStartsWithQueryParameter:
         if (a != 0) {
           ASSERT(a < m.size);
           o << " -> \"" << m.t + a << "\"\n";
@@ -161,6 +166,11 @@ void Printer::print(const Code & co, const Memory & m,
       case Opcodes::kNotEqualQueryParameter:
       case Opcodes::kPrintDebug:
       case Opcodes::kPrintError:
+      case Opcodes::kStartsWithCookie:
+      case Opcodes::kStartsWithDomain:
+      case Opcodes::kStartsWithHeader:
+      case Opcodes::kStartsWithPath:
+      case Opcodes::kStartsWithQueryParameter:
         if (b != 0) {
           ASSERT(b < m.size);
           o << " -> \"" << m.t + b << "\"\n";
