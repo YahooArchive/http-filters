@@ -89,6 +89,8 @@ struct Assembler {
 
   void pushNotEqualDomain(const char * const, const uint32_t);
 
+  void pushStartsWithDomain(const char * const, const uint32_t, const uint32_t);
+
   /*
    * Path
    */
@@ -97,6 +99,8 @@ struct Assembler {
   void pushEqualPath(const char * const, const uint32_t);
 
   void pushNotEqualPath(const char * const, const uint32_t);
+
+  void pushStartsWithPath(const char * const, const uint32_t, const uint32_t);
 
   /*
    * Query Parameters
@@ -119,6 +123,8 @@ struct Assembler {
 
   void pushNotEqualQueryParameter(const char * const, const char * const);
 
+  void pushStartsWithQueryParameter(const char * const, const char * const, const uint32_t);
+
   /*
    * Headers
    */
@@ -140,6 +146,8 @@ struct Assembler {
 
   void pushNotEqualHeader(const char * const, const char * const);
 
+  void pushStartsWithHeader(const char * const, const char * const, const uint32_t);
+
   /*
    * Cookies
    */
@@ -160,6 +168,8 @@ struct Assembler {
       const uint32_t);
 
   void pushNotEqualCookie(const char * const, const char * const);
+
+  void pushStartsWithCookie(const char * const, const char * const, const uint32_t);
 };
 } //end of filters namespace
 } //end of http namespace
