@@ -87,6 +87,7 @@ struct TSImplementation : BaseImplementation {
 
   bool ContainsDomain(const char * const, const uint32_t);
   bool EqualDomain(const char * const, const uint32_t);
+  bool StartsWithDomain(const char * const, const uint32_t, const uint32_t);
 
   inline bool NotEqualDomain(const char * const a, const uint32_t b) {
     return ! EqualDomain(a, b);
@@ -94,6 +95,7 @@ struct TSImplementation : BaseImplementation {
 
   bool ContainsPath(const char * const, const uint32_t);
   bool EqualPath(const char * const, const uint32_t);
+  bool StartsWithPath(const char * const, const uint32_t, const uint32_t);
 
   inline bool NotEqualPath(const char * const a, const uint32_t b) {
     return ! EqualPath(a, b);
@@ -116,6 +118,7 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterQueryParameter(const char * const, const char * const, const int64_t);
   bool LessThanQueryParameter(const char * const, const int64_t);
   bool LessThanAfterQueryParameter(const char * const, const char * const, const int64_t);
+  bool StartsWithQueryParameter(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualQueryParameter(const char * const a, const char * const b) {
     return ExistsQueryParameter(a) && ! EqualQueryParameter(a, b);
@@ -132,6 +135,7 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterHeader(const char * const, const char * const, const int64_t);
   bool LessThanHeader(const char * const, const int64_t);
   bool LessThanAfterHeader(const char * const, const char * const, const int64_t);
+  bool StartsWithHeader(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualHeader(const char * const a, const char * const b) {
     return ExistsHeader(a) && ! EqualHeader(a, b);
@@ -148,6 +152,7 @@ struct TSImplementation : BaseImplementation {
   bool GreaterThanAfterCookie(const char * const, const char * const, const int64_t);
   bool LessThanCookie(const char * const, const int64_t);
   bool LessThanAfterCookie(const char * const, const char * const, const int64_t);
+  bool StartsWithCookie(const char * const, const char * const, const uint32_t);
 
   inline bool NotEqualCookie(const char * const a, const char * const b) {
     return ExistsCookie(a) && ! EqualCookie(a, b);
