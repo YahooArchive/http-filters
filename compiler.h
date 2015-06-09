@@ -82,6 +82,18 @@ struct Compiler {
     a.pushNotEqualDomain(p[0].c_str(), p[0].size());
   }
 
+  static inline void PushStartsWithDomain(Assembler & a,
+      const Op::Parameters & p) {
+    ASSERT(p.size() == 2);
+    a.pushStartsWithDomain(p[0].c_str(), p[0].size(), atoi(p[1].c_str()));
+  }
+
+  static inline void PushStartsWithPath(Assembler & a,
+      const Op::Parameters & p) {
+    ASSERT(p.size() == 2);
+    a.pushStartsWithPath(p[0].c_str(), p[0].size(), atoi(p[1].c_str()));
+  }
+
   static inline void PushContainsPath(Assembler & a,
       const Op::Parameters & p) {
     ASSERT(p.size() == 1);
@@ -242,6 +254,25 @@ struct Compiler {
       const Op::Parameters & p) {
     ASSERT(p.size() == 1);
     a.pushExistsCookie(p[0].c_str());
+  }
+
+  static inline void PushStartsWithCookie(Assembler & a,
+      const Op::Parameters & p) {
+    ASSERT(p.size() == 3);
+    a.pushStartsWithCookie(p[0].c_str(), p[1].c_str(), atoi(p[2].c_str()));
+  }
+
+  static inline void PushStartsWithHeader(Assembler & a,
+      const Op::Parameters & p) {
+    ASSERT(p.size() == 3);
+    a.pushStartsWithHeader(p[0].c_str(), p[1].c_str(), atoi(p[2].c_str()));
+  }
+
+  static inline void PushStartsWithQueryParameter(Assembler & a,
+      const Op::Parameters & p) {
+    ASSERT(p.size() == 3);
+    a.pushStartsWithQueryParameter(p[0].c_str(), p[1].c_str(),
+        atoi(p[2].c_str()));
   }
 
   static inline void PushExecute(Assembler & a, const ExecutionMode::MODES m,
