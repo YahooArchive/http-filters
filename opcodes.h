@@ -132,6 +132,7 @@ struct Opcodes {
     kContainsDomain,
     kEqualDomain,
     kNotEqualDomain,
+    kStartsWithDomain,
 
     /*
      * Path
@@ -140,6 +141,7 @@ struct Opcodes {
     kContainsPath,
     kEqualPath,
     kNotEqualPath,
+    kStartsWithPath,
 
     /*
      * Query Parameters
@@ -154,6 +156,7 @@ struct Opcodes {
     kLessThanQueryParameter,
     kLessThanAfterQueryParameter,
     kNotEqualQueryParameter,
+    kStartsWithQueryParameter,
 
     /*
      * Headers
@@ -168,6 +171,7 @@ struct Opcodes {
     kLessThanHeader,
     kLessThanAfterHeader,
     kNotEqualHeader,
+    kStartsWithHeader,
 
     /*
      * Cookies
@@ -182,6 +186,7 @@ struct Opcodes {
     kLessThanCookie,
     kLessThanAfterCookie,
     kNotEqualCookie,
+    kStartsWithCookie,
 
     /*
      * invalid instruction.
