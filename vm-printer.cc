@@ -221,6 +221,8 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kEqualDomain"; break;
   case Opcodes::kNotEqualDomain:
     return "kNotEqualDomain"; break;
+  case Opcodes::kStartsWithDomain:
+    return "kStartsWithDomain"; break;
 
   case Opcodes::kContainsPath:
     return "kContainsPath"; break;
@@ -228,6 +230,8 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kEqualPath"; break;
   case Opcodes::kNotEqualPath:
     return "kNotEqualPath"; break;
+  case Opcodes::kStartsWithPath:
+    return "kStartsWithPath"; break;
 
   case Opcodes::kContainsQueryParameter:
     return "kContainsQueryParameter"; break;
@@ -245,6 +249,8 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kLessThanAfterQueryParameter"; break;
   case Opcodes::kNotEqualQueryParameter:
     return "kNotEqualQueryParameter"; break;
+  case Opcodes::kStartsWithQueryParameter:
+    return "kStartsWithQueryParameter"; break;
 
   case Opcodes::kContainsHeader:
     return "kContainsHeader"; break;
@@ -262,6 +268,8 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kLessThanAfterHeader"; break;
   case Opcodes::kNotEqualHeader:
     return "kNotEqualHeader"; break;
+  case Opcodes::kStartsWithHeader:
+    return "kStartsWithHeader"; break;
 
   case Opcodes::kContainsCookie:
     return "kContainsCookie"; break;
@@ -279,6 +287,8 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kLessThanAfterCookie"; break;
   case Opcodes::kNotEqualCookie:
     return "kNotEqualCookie"; break;
+  case Opcodes::kStartsWithCookie:
+    return "kStartsWithCookie"; break;
 
   case Opcodes::kUpperBound:
     return "kUpperBound"; break;
