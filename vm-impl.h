@@ -378,11 +378,6 @@ void VM< I >::dispatch(void) {
     cache = true;
     break;
 
-  case Opcodes::kStartsWithCookie:
-    result(r = i_.StartsWithCookie(P_AB, registers_.c));
-    cache = true;
-    break;
-
   case Opcodes::kUpperBound: ASSERT(false); break; //unrecheable
   default: ASSERT(false); break; //unrecheable
   }

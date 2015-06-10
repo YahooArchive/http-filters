@@ -161,8 +161,6 @@ struct TSImplementation : BaseImplementation {
     return ExistsCookie(a) && ! EqualCookie(a, b);
   }
 
-  bool StartsWithCookie(const char * const, const char * const, const uint32_t);
-
 };
 } //end of filters namespace
 } //end of http namespace

@@ -132,7 +132,6 @@ void Printer::print(const Code & co, const Memory & m,
       case Opcodes::kNotEqualQueryParameter:
       case Opcodes::kPrintDebug:
       case Opcodes::kPrintError:
-      case Opcodes::kStartsWithCookie:
       case Opcodes::kStartsWithDomain:
       case Opcodes::kStartsWithHeader:
       case Opcodes::kStartsWithPath:
@@ -166,7 +165,6 @@ void Printer::print(const Code & co, const Memory & m,
       case Opcodes::kNotEqualQueryParameter:
       case Opcodes::kPrintDebug:
       case Opcodes::kPrintError:
-      case Opcodes::kStartsWithCookie:
       case Opcodes::kStartsWithDomain:
       case Opcodes::kStartsWithHeader:
       case Opcodes::kStartsWithPath:
@@ -297,8 +295,6 @@ const char * Printer::opcode(Opcodes::OPCODES op) {
     return "kLessThanAfterCookie"; break;
   case Opcodes::kNotEqualCookie:
     return "kNotEqualCookie"; break;
-  case Opcodes::kStartsWithCookie:
-    return "kStartsWithCookie"; break;
 
   case Opcodes::kUpperBound:
     return "kUpperBound"; break;

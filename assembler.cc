@@ -453,18 +453,6 @@ void Assembler::pushNotEqualCookie(const char * const a,
   push(Opcodes::kNotEqualHeader, o, p, 0);
 }
 
-void Assembler::pushStartsWithCookie(const char * const a,
-    const char * const b, const uint32_t c) {
-  if (a == NULL) {
-    throw std::invalid_argument("Invalid 1st argument: NULL pointer");
-  } else if (b == NULL) {
-    throw std::invalid_argument("Invalid 2st argument: NULL pointer");
-  }
-  const uint32_t o = pushMemory(a),
-        p = pushMemory(b);
-  push(Opcodes::kStartsWithCookie, o, p, c);
-}
-
 void Assembler::pushExistsQueryParameter(const char * const a) {
   if (a == NULL) {
     throw std::invalid_argument("Invalid 1st argument: NULL pointer");

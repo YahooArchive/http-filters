@@ -168,8 +168,6 @@ struct Assembler {
       const uint32_t);
 
   void pushNotEqualCookie(const char * const, const char * const);
-
-  void pushStartsWithCookie(const char * const, const char * const, const uint32_t);
 };
 } //end of filters namespace
 } //end of http namespace

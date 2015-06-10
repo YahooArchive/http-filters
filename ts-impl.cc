@@ -365,9 +365,5 @@ bool TSImplementation::LessThanAfterCookie(const char * const a,
       LessThanAfter< int64_t >(b, strlen(b), c));
 }
 
-bool TSImplementation::StartsWithCookie(
-    const char * const a, const char * const b, const uint32_t c) {
-  return Loop< Cookies >(cookies()[a], StartsWith(b, strlen(b), c));
-}
 } //end of filters namespace
 } //end of http namespace

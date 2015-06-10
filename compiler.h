@@ -256,12 +256,6 @@ struct Compiler {
     a.pushExistsCookie(p[0].c_str());
   }
 
-  static inline void PushStartsWithCookie(Assembler & a,
-      const Op::Parameters & p) {
-    ASSERT(p.size() == 2);
-    a.pushStartsWithCookie(p[0].c_str(), p[1].c_str(), 0);
-  }
-
   static inline void PushStartsWithHeader(Assembler & a,
       const Op::Parameters & p) {
     ASSERT(p.size() == 2);

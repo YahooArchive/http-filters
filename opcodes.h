@@ -186,7 +186,6 @@ struct Opcodes {
     kLessThanCookie,
     kLessThanAfterCookie,
     kNotEqualCookie,
-    kStartsWithCookie,
 
     /*
      * invalid instruction.
