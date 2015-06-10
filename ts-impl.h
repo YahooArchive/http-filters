@@ -92,12 +92,16 @@ struct TSImplementation : BaseImplementation {
     return ! EqualDomain(a, b);
   }
 
+  bool StartsWithDomain(const char * const, const uint32_t, const uint32_t);
+
   bool ContainsPath(const char * const, const uint32_t);
   bool EqualPath(const char * const, const uint32_t);
 
   inline bool NotEqualPath(const char * const a, const uint32_t b) {
     return ! EqualPath(a, b);
   }
+
+  bool StartsWithPath(const char * const, const uint32_t, const uint32_t);
 
   util::StringView queryParameter(const TSMBuffer & b) {
     int length = 0;
@@ -121,6 +125,8 @@ struct TSImplementation : BaseImplementation {
     return ExistsQueryParameter(a) && ! EqualQueryParameter(a, b);
   }
 
+  bool StartsWithQueryParameter(const char * const, const char * const, const uint32_t);
+
   bool ContainsHeader(const char * const, const char * const);
   bool EqualHeader(const char * const, const char * const);
 
@@ -136,6 +142,8 @@ struct TSImplementation : BaseImplementation {
   inline bool NotEqualHeader(const char * const a, const char * const b) {
     return ExistsHeader(a) && ! EqualHeader(a, b);
   }
+
+  bool StartsWithHeader(const char * const, const char * const, const uint32_t);
 
   bool ContainsCookie(const char * const, const char * const);
   bool EqualCookie(const char * const, const char * const);

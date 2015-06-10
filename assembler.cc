@@ -187,6 +187,17 @@ void Assembler::pushNotEqualDomain(const char * const a, const uint32_t b) {
   push(Opcodes::kNotEqualDomain, o, b, 0);
 }
 
+void Assembler::pushStartsWithDomain(const char * const a, const uint32_t b,
+    const uint32_t c) {
+  if (a == NULL) {
+    throw std::invalid_argument("Invalid 1st argument: NULL pointer");
+  } else if (strlen(a) < b) {
+    throw std::invalid_argument("Invalid 2st argument: greater than string");
+  }
+  const uint32_t o = pushMemory(a);
+  push(Opcodes::kStartsWithDomain, o, b, c);
+}
+
 void Assembler::pushContainsPath(const char * const a, const uint32_t b) {
   if (a == NULL) {
     throw std::invalid_argument("Invalid 1st argument: NULL pointer");
@@ -205,6 +216,17 @@ void Assembler::pushEqualPath(const char * const a, const uint32_t b) {
   }
   const uint32_t o = pushMemory(a);
   push(Opcodes::kEqualPath, o, b, 0);
+}
+
+void Assembler::pushStartsWithPath(const char * const a, const uint32_t b,
+    const uint32_t c) {
+  if (a == NULL) {
+    throw std::invalid_argument("Invalid 1st argument: NULL pointer");
+  } else if (strlen(a) < b) {
+    throw std::invalid_argument("Invalid 2st argument: greater than string");
+  }
+  const uint32_t o = pushMemory(a);
+  push(Opcodes::kStartsWithPath, o, b, c);
 }
 
 void Assembler::pushNotEqualPath(const char * const a, const uint32_t b) {
@@ -239,6 +261,7 @@ void Assembler::pushContainsCookie(const char * const a, const char * const b) {
         p = pushMemory(b);
   push(Opcodes::kContainsCookie, o, p, 0);
 }
+
 
 void Assembler::pushContainsHeader(const char * const a, const char * const b) {
   if (a == NULL) {
@@ -359,7 +382,6 @@ void Assembler::pushLessThanCookie(const char * const a,
   push(Opcodes::kLessThanAfterCookie, o, b, 0);
 }
 
-
 void Assembler::pushEqualQueryParameter(const char * const a,
     const char * const b) {
   if (a == NULL) {
@@ -370,6 +392,18 @@ void Assembler::pushEqualQueryParameter(const char * const a,
   const uint32_t o = pushMemory(a),
         p = pushMemory(b);
   push(Opcodes::kEqualQueryParameter, o, p, 0);
+}
+
+void Assembler::pushStartsWithQueryParameter(const char * const a,
+    const char * const b, const uint32_t c) {
+  if (a == NULL) {
+    throw std::invalid_argument("Invalid 1st argument: NULL pointer");
+  } else if (b == NULL) {
+    throw std::invalid_argument("Invalid 2st argument: NULL pointer");
+  }
+  const uint32_t o = pushMemory(a),
+        p = pushMemory(b);
+  push(Opcodes::kStartsWithQueryParameter, o, p, c);
 }
 
 void Assembler::pushNotEqualQueryParameter(const char * const a,
@@ -394,6 +428,18 @@ void Assembler::pushNotEqualHeader(const char * const a,
   const uint32_t o = pushMemory(a),
         p = pushMemory(b);
   push(Opcodes::kNotEqualHeader, o, p, 0);
+}
+
+void Assembler::pushStartsWithHeader(const char * const a,
+    const char * const b, const uint32_t c) {
+  if (a == NULL) {
+    throw std::invalid_argument("Invalid 1st argument: NULL pointer");
+  } else if (b == NULL) {
+    throw std::invalid_argument("Invalid 2st argument: NULL pointer");
+  }
+  const uint32_t o = pushMemory(a),
+        p = pushMemory(b);
+  push(Opcodes::kStartsWithHeader, o, p, c);
 }
 
 void Assembler::pushNotEqualCookie(const char * const a,

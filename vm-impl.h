@@ -223,6 +223,11 @@ void VM< I >::dispatch(void) {
     cache = true;
     break;
 
+  case Opcodes::kStartsWithDomain:
+    result(r = i_.StartsWithDomain(P_A, registers_.b, registers_.c));
+    cache = true;
+    break;
+
   case Opcodes::kContainsPath:
     result(r = i_.ContainsPath(P_A, registers_.b));
     cache = true;
@@ -235,6 +240,11 @@ void VM< I >::dispatch(void) {
 
   case Opcodes::kNotEqualPath:
     result(r = i_.NotEqualPath(P_A, registers_.b));
+    cache = true;
+    break;
+
+  case Opcodes::kStartsWithPath:
+    result(r = i_.StartsWithPath(P_A, registers_.b, registers_.c));
     cache = true;
     break;
 
@@ -278,6 +288,11 @@ void VM< I >::dispatch(void) {
     cache = true;
     break;
 
+  case Opcodes::kStartsWithQueryParameter:
+    result(r = i_.StartsWithQueryParameter(P_AB, registers_.c));
+    cache = true;
+    break;
+
   case Opcodes::kContainsHeader:
     result(r = i_.ContainsHeader(P_AB));
     cache = true;
@@ -315,6 +330,11 @@ void VM< I >::dispatch(void) {
 
   case Opcodes::kNotEqualHeader:
     result(r = i_.NotEqualHeader(P_AB));
+    cache = true;
+    break;
+
+  case Opcodes::kStartsWithHeader:
+    result(r = i_.StartsWithHeader(P_AB, registers_.c));
     cache = true;
     break;
 

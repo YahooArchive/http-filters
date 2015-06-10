@@ -54,7 +54,8 @@ static int handler(TSCont continuation, TSEvent event, void * data) {
           data->code, data->memory);
 
       const char * names[] = {
-        "http get", "firefox", "yahoo domain", "slash-search", "california",
+        "http get", "firefox", "yahoo domain", "slash-search",
+        "california", "city starts with san",
       };
 
       for (int i = 0; i < ARRAY_SIZE(names); ++i) {
@@ -126,6 +127,12 @@ void TSPluginInit(int argc, const char * * argv) {
     {
       Tree t;
       OP(t, "containsQueryParameter", "state", "california");
+      f.push_back(t);
+    }
+
+    {
+      Tree t;
+      OP(t, "startsWithQueryParameter", "city", "san");
       f.push_back(t);
     }
 
