@@ -23,10 +23,12 @@ struct BaseImplementation {
   bool ContainsDomain(const char * const, const uint32_t) { return true; }
   bool EqualDomain(const char * const, const uint32_t) { return true; }
   bool NotEqualDomain(const char * const, const uint32_t) { return true; }
+  bool StartsWithDomain(const char * const, const uint32_t, const uint32_t) { return true; }
 
   bool ContainsPath(const char * const, const uint32_t) { return true; }
   bool EqualPath(const char * const, const uint32_t) { return true; }
   bool NotEqualPath(const char * const, const uint32_t) { return true; }
+  bool StartsWithPath(const char * const, const uint32_t, const uint32_t) { return true; }
 
   bool ContainsQueryParameter(const char * const, const char * const) {return true; }
   bool EqualQueryParameter(const char * const, const char * const) { return true; }
@@ -36,6 +38,7 @@ struct BaseImplementation {
   bool LessThanQueryParameter(const char * const, const int64_t) { return true; }
   bool LessThanAfterQueryParameter(const char * const, const char * const, const int64_t) { return true; }
   bool NotEqualQueryParameter(const char * const, const char * const) { return true; }
+  bool StartsWithQueryParameter(const char * const, const char * const, const uint32_t) { return true; }
 
   bool ContainsHeader(const char * const, const char * const) { return true; }
   bool EqualHeader(const char * const, const char * const) { return true; }
@@ -45,6 +48,7 @@ struct BaseImplementation {
   bool LessThanHeader(const char * const, const int64_t) { return true; }
   bool LessThanAfterHeader(const char * const, const char * const, const int64_t) { return true; }
   bool NotEqualHeader(const char * const, const char * const) { return true; }
+  bool StartsWithHeader(const char * const, const char * const, const uint32_t) { return true; }
 
   bool ContainsCookie(const char * const, const char * const) { return true; }
   bool EqualCookie(const char * const, const char * const) { return true; }
