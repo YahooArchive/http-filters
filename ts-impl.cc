@@ -260,7 +260,6 @@ bool TSImplementation::StartsWithDomain(
     && std::search(begin, end, a, a + b) == begin + c;
 }
 
-
 bool TSImplementation::ContainsPath(
     const char * const a, const uint32_t b) {
   ASSERT(a != NULL);
@@ -296,7 +295,6 @@ bool TSImplementation::StartsWithPath(
   return begin != end
     && std::search(begin, end, a, a + b) == begin + c;
 }
-
 
 bool TSImplementation::ContainsQueryParameter(
     const char * const a, const char * const b) {
@@ -335,7 +333,6 @@ bool TSImplementation::StartsWithQueryParameter(
   return Loop< QueryParameters >(queryParameters()[a], StartsWith(b, strlen(b), c));
 }
 
-
 bool TSImplementation::ContainsCookie(
     const char * const a, const char * const b) {
   return Loop< Cookies >(cookies()[a], Contains(b, strlen(b)));
@@ -367,6 +364,5 @@ bool TSImplementation::LessThanAfterCookie(const char * const a,
   return Loop< Cookies >(cookies()[a],
       LessThanAfter< int64_t >(b, strlen(b), c));
 }
-
 } //end of filters namespace
 } //end of http namespace

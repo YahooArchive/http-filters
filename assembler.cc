@@ -262,6 +262,7 @@ void Assembler::pushContainsCookie(const char * const a, const char * const b) {
   push(Opcodes::kContainsCookie, o, p, 0);
 }
 
+
 void Assembler::pushContainsHeader(const char * const a, const char * const b) {
   if (a == NULL) {
     throw std::invalid_argument("Invalid 1st argument: NULL pointer");
