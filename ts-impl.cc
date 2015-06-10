@@ -141,7 +141,8 @@ struct StartsWith {
   bool operator () (const I & i) const {
     const char * const begin = i->pointer,
           * const end = begin + i->length;
-    return std::search(begin, end, p, p + s) == begin + o;
+    return begin != end
+      && std::search(begin, end, p, p + s) == begin + o;
   }
 };
 
@@ -255,7 +256,8 @@ bool TSImplementation::StartsWithDomain(
   int l = 0;
   const char * const begin = TSUrlHostGet(buffer_, url(), &l),
         * const end = begin + l;
-  return std::search(begin, end, a, a + b) == begin + c;
+  return begin != end
+    && std::search(begin, end, a, a + b) == begin + c;
 }
 
 
@@ -291,7 +293,8 @@ bool TSImplementation::StartsWithPath(
   int l = 0;
   const char * const begin = TSUrlPathGet(buffer_, url(), &l),
         * const end = begin + l;
-  return std::search(begin, end, a, a + b) == begin + c;
+  return begin != end
+    && std::search(begin, end, a, a + b) == begin + c;
 }
 
 
