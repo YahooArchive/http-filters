@@ -185,6 +185,22 @@ struct HttpFiltersUnitTest : public CppUnit::TestFixture {
     ASSERT(vm.run(16));
   }
 
+  void testEmptyTree(void) {
+    using namespace http::filters;
+    Tree t;
+
+    Compiler c;
+    ASSERT(c.compile(t) == 0);
+
+    ASSERT(c.assembler_.code()[0] == Opcodes::kHalt);
+
+    typedef VMProxy< ConsoleImplementation > MyVM;
+    MyVM vm(ConsoleImplementation(output, output),
+        c.assembler_.code(), c.assembler_.memory());
+
+    ASSERT(vm.run(0));
+  }
+
   void test1(void) {
     const uint32_t p[] = {
       Opcodes::kTrue, 0x0, 0x0, 0x0,
@@ -463,6 +479,7 @@ struct HttpFiltersUnitTest : public CppUnit::TestFixture {
   CPPUNIT_TEST(testAssembler);
   CPPUNIT_TEST(testCompiler);
   CPPUNIT_TEST(testCompiler2);
+  CPPUNIT_TEST(testEmptyTree);
   CPPUNIT_TEST(test1);
   CPPUNIT_TEST(test2);
   CPPUNIT_TEST(test3);

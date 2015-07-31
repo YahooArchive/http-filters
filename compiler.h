@@ -26,6 +26,9 @@ struct Compiler {
   void compile(const Forest &, Offsets &);
 
   inline uint32_t compile(const Tree & t) {
+    if (t.root() == NULL) {
+      return 0;
+    }
     const uint32_t result = compileSimple(t.root());
     assembler_.pushHalt();
     return result;

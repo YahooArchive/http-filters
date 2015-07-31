@@ -31,6 +31,7 @@ struct Assembler {
 
   Assembler(void) {
     memory_.push_back('\0');
+    pushHalt();
   }
 
   uint32_t operator [](const char * const) const;
