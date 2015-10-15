@@ -53,6 +53,11 @@ void Assembler::push(const uint32_t op, const uint32_t a,
 uint32_t Assembler::pushMemory(const char * const a) {
   typedef std::pair< Labels::iterator, bool > Result;
   ASSERT(a != NULL);
+  
+  if ('\0' == *a) {
+    return 0;
+  }
+  
   Result result = memoryUnifier_.insert(
       std::make_pair(std::string(a), instructions_.size()));
 
