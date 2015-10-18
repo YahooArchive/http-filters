@@ -114,7 +114,27 @@ struct HttpFiltersUnitTest : public CppUnit::TestFixture {
       ASSERT( ! vm.vm_.bitmap_[i]);
     }
   }
+  
+  void testAssembler2(void) {
+    using namespace http::filters;
 
+    Assembler assembler;
+    assembler.pushEqualQueryParameter("ab", "");
+    assembler.pushEqualQueryParameter("ab", "");
+    assembler.pushHalt();
+
+    typedef VMProxy< ConsoleImplementation > MyVM;
+    MyVM vm(ConsoleImplementation(output, output),
+        assembler.code(), assembler.memory());
+
+    ASSERT(vm.run(0));
+    ASSERT(vm.run(0));
+
+    for (int i = 0; i < vm.vm_.bitmap_.size(); ++i) {
+      ASSERT( ! vm.vm_.bitmap_[i]);
+    }   
+  }
+  
   void testCompiler(void) {
     using namespace http::filters;
     Tree t;
@@ -477,6 +497,7 @@ struct HttpFiltersUnitTest : public CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE(HttpFiltersUnitTest);
   CPPUNIT_TEST(testBitmaps);
   CPPUNIT_TEST(testAssembler);
+  CPPUNIT_TEST(testAssembler2);
   CPPUNIT_TEST(testCompiler);
   CPPUNIT_TEST(testCompiler2);
   CPPUNIT_TEST(testEmptyTree);
