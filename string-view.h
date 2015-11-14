@@ -21,7 +21,6 @@ struct StringView {
 
   StringView(const char * const p, const size_t l) :
     pointer(p), length(p == NULL ? 0 : l) {
-    ASSERT(p == NULL || l > 0);
     ASSERT(p == NULL || strlen(pointer) >= length);
   }
 
