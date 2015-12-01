@@ -115,6 +115,10 @@ void Cookies::parse(const util::StringView & s) {
       break;
     }
   }
+  if (i < j) {
+    map_[util::StringView(i, j - i)]
+      .push_back(util::StringView(j + 1, k - j - 1));
+  }
 }
 
 Cookies::Result Cookies::operator [] (
