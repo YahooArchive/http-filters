@@ -143,7 +143,7 @@ void QueryParameters::push(const char * const i,
     j = k;
   }
   Values & v = map_[util::StringView(i, j - i)];
-  if (j + 1 < k) {
+  if (j + 1 <= k) {
     v.push_back(util::StringView(j + 1, k - j - 1));
   }
 }
