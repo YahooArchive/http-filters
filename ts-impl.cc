@@ -157,7 +157,7 @@ bool Loop(const typename T::Result & r, const U & u) {
   Iterator it = r.first->begin();
   for (; it != end; ++it) {
     ASSERT(it->pointer != NULL);
-    ASSERT(it->length > 0);
+    ASSERT(it->length >= 0);
     if (u(it)) {
       return true;
     }
